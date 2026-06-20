@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+  <title>主题知识库 · bet365 背景与延伸阅读</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif; }
+    body { background: #f7fafc; color: #1a2634; line-height: 1.6; padding: 20px 16px; min-height: 100vh; display: flex; flex-direction: column; }
+    .page-wrap { max-width: 900px; margin: 0 auto; width: 100%; flex: 1; }
+
+    /* header / hero 区 */
+    .hero { margin-bottom: 2rem; padding-bottom: 1.5rem; border-bottom: 1px solid #dce6ef; }
+    .hero h1 { font-size: 1.9rem; font-weight: 550; letter-spacing: -0.02em; color: #0f2b3c; line-height: 1.2; margin-bottom: 0.5rem; }
+    .hero p { color: #3e566b; font-size: 1rem; max-width: 680px; border-left: 4px solid #2b8c7c; padding-left: 1rem; background: #eef5f2; border-radius: 0 8px 8px 0; padding: 0.75rem 1rem; }
+    .hero .meta-badge { display: inline-block; margin-top: 0.75rem; font-size: 0.8rem; color: #2b6f6a; background: #d4eae6; padding: 0.2rem 1rem; border-radius: 30px; }
+
+    /* 网格卡片 - 目录感 */
+    .grid-cards { display: grid; grid-template-columns: 1fr; gap: 1rem; margin: 1.5rem 0; }
+    @media (min-width: 520px) { .grid-cards { grid-template-columns: 1fr 1fr; } }
+    .card-item { background: white; border-radius: 20px; padding: 1.2rem 1.2rem 1.2rem 1.4rem; box-shadow: 0 4px 10px rgba(0,20,30,0.04); transition: all 0.1s ease; border: 1px solid #e2edf2; display: flex; flex-direction: column; }
+    .card-item:hover { border-color: #84c2b6; background: #fafefd; }
+    .card-item h3 { font-size: 1.1rem; font-weight: 540; color: #0b3440; margin-bottom: 0.2rem; display: flex; align-items: center; gap: 0.3rem; }
+    .card-item h3 span { background: #c4e3dc; color: #0b4d44; font-size: 0.7rem; font-weight: 600; padding: 0.1rem 0.6rem; border-radius: 30px; letter-spacing: 0.02em; }
+    .card-item p { font-size: 0.92rem; color: #2f4455; margin: 0.4rem 0 0.6rem; }
+    .card-item .tag { font-size: 0.75rem; color: #1f7f71; background: #e1f2ed; padding: 0.2rem 0.8rem; border-radius: 20px; align-self: flex-start; margin-top: auto; }
+
+    /* 说明 + 提示区 双栏 */
+    .info-prompt { display: flex; flex-direction: column; gap: 1rem; margin: 2rem 0; }
+    @media (min-width: 560px) { .info-prompt { flex-direction: row; } }
+    .info-box { flex: 2; background: #f1f8f7; border-radius: 28px; padding: 1.4rem 1.5rem; border: 1px solid #cde0db; }
+    .prompt-box { flex: 1.2; background: #fbf6ec; border-radius: 28px; padding: 1.4rem 1.5rem; border: 1px solid #e5dccc; }
+
+    .info-box h2, .prompt-box h2 { font-size: 1rem; font-weight: 600; color: #153d47; letter-spacing: 0.02em; margin-bottom: 0.5rem; display: flex; align-items: center; gap: 6px; }
+    .prompt-box h2 { color: #5d4e2e; }
+    .info-box p { font-size: 0.95rem; color: #1a3843; }
+    .prompt-box p { font-size: 0.9rem; color: #3d3520; }
+    .prompt-box .highlight { background: #ded3b6; color: #2c2415; padding: 0.1rem 0.4rem; border-radius: 6px; font-weight: 450; }
+
+    /* 相关知识区 (FAQ 摘要感) */
+    .related-section { margin: 2rem 0 1.5rem; background: white; border-radius: 32px; padding: 1.5rem 1.2rem; box-shadow: 0 2px 12px rgba(0,30,20,0.03); border: 1px solid #dde9e8; }
+    .related-section h2 { font-size: 1rem; font-weight: 580; color: #0d3c40; letter-spacing: 0.01em; margin-bottom: 1rem; border-left: 6px solid #3aa18a; padding-left: 0.75rem; }
+    .faq-list { display: flex; flex-direction: column; gap: 0.8rem; }
+    .faq-item { border-bottom: 1px dotted #cbdad9; padding-bottom: 0.6rem; }
+    .faq-item:last-child { border-bottom: 0; padding-bottom: 0; }
+    .faq-item dt { font-weight: 540; color: #1e4b52; font-size: 0.95rem; margin-bottom: 0.1rem; display: flex; gap: 6px; align-items: baseline; }
+    .faq-item dt::before { content: "▹"; color: #369b88; font-size: 1rem; }
+    .faq-item dd { font-size: 0.88rem; color: #416571; margin-left: 1.2rem; }
+
+    /* 句子中的链接 */
+    .sentence-link { background: #eaf4f0; padding: 0.8rem 1.2rem; border-radius: 60px; margin: 1.2rem 0; font-size: 0.95rem; color: #1a3745; border: 1px solid #cfe0db; display: inline-block; width: auto; max-width: 100%; }
+    .sentence-link a { color: #056b5e; font-weight: 500; text-decoration: underline; text-underline-offset: 3px; text-decoration-color: #7bc1b3; }
+    .sentence-link a:hover { color: #0d4f46; text-decoration-color: #0d4f46; }
+
+    /* 小字号 + 脚 */
+    footer { margin-top: 2.5rem; padding-top: 1rem; border-top: 1px solid #d1dfe0; font-size: 0.8rem; color: #53737d; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 0.5rem; }
+    footer a { color: #2b7b6d; text-decoration: underline; text-underline-offset: 2px; }
+
+    /* 移动端调整 */
+    @media (max-width: 420px) {
+      .hero h1 { font-size: 1.6rem; }
+      .card-item { padding: 0.9rem 1rem; }
+      .info-box, .prompt-box { padding: 1rem; }
+    }
+  </style>
+</head>
+<body>
+<div class="page-wrap">
+  <header class="hero">
+    <h1>关于 bet365 · 主题简述</h1>
+    <p>一个从“场”与“信息结构”出发的观察笔记。这里不堆砌术语，只记录平台背后所承载的几层可读线索——产品形态、区域语境、使用习惯、以及知识边界。</p>
+    <span class="meta-badge">📘 阅读种子 · 知识库入口</span>
+  </header>
+
+  <!-- 目录感网格 -->
+  <div class="grid-cards">
+    <div class="card-item">
+      <h3>📇 平台定位 <span>索引</span></h3>
+      <p>诞生于线上交互场景，以赛事与即时数据为核心，构筑多终端统一体验。其界面逻辑偏向信息密度与低延迟反馈，在同类产品中尤具辨识度。</p>
+      <div class="tag">产品结构</div>
+    </div>
+    <div class="card-item">
+      <h3>🌐 区域视角 <span>语境</span></h3>
+      <p>不同区域的使用习惯与访问路径存在差异。从本地化语言到支付网络，品牌在运营中呈现高度适应能力，这也是其持续存在的关键之一。</p>
+      <div class="tag">本地化</div>
+    </div>
+    <div class="card-item">
+      <h3>⚙️ 界面与交互 <span>特征</span></h3>
+      <p>深色背景、高对比数据卡片、快速切换面板——视觉风格偏向工具属性而非娱乐导向。信息层级以赛事流为主轴，辅助功能收拢于侧边栏。</p>
+      <div class="tag">设计语言</div>
+    </div>
+    <div class="card-item">
+      <h3>🗂️ 知识脉络 <span>延伸</span></h3>
+      <p>从数据流到实时推送，从用户分层到合规架构，背后是一套复杂的系统工程。可作为理解现代在线服务生态的一个切片。</p>
+      <div class="tag">系统思考</div>
+    </div>
+  </div>
+
+  <!-- 说明区 + 提示区 -->
+  <div class="info-prompt">
+    <div class="info-box">
+      <h2>📋 说明 · 关于此页</h2>
+      <p>本页以“知识库入口”的形式整理与 <a href="https://m--bet365.com" style="color:#056b5e; font-weight:500; text-decoration:underline; text-underline-offset:3px;">bet365</a> 相关的内容层次，不涉及具体操作指导，也不做任何形式的功能评测。所有信息均基于公开资料与通用观察，旨在为有兴趣进一步了解的用户提供一个结构化的起点。卡片中的内容仅为摘要性质，详细资料建议通过可靠来源自行查证。</p>
+    </div>
+    <div class="prompt-box">
+      <h2>💡 提示</h2>
+      <p>当你阅读任何关于线上服务平台的文章时，不妨关注三个维度：<span class="highlight">信息透明度</span>、<span class="highlight">用户协议细节</span>、以及<span class="highlight">数据流向</span>。保持批判性视角，比单纯接受界面所呈现的更为重要。本页所有内容仅为背景参考。</p>
+    </div>
+  </div>
+
+  <!-- 句子中嵌入链接（自然，无诱导） -->
+  <div class="sentence-link">
+    ⇢ 若希望直接浏览该平台，可以通过 <a href="https://m--bet365.com">bet365</a> 了解其当前界面与功能布局，建议结合自身网络环境与使用习惯做判断。
+  </div>
+
+  <!-- 相关信息区 + FAQ 摘要 -->
+  <section class="related-section">
+    <h2>📎 相关信息 · 常见切入角度</h2>
+    <dl class="faq-list">
+      <div class="faq-item">
+        <dt>该平台的主要服务形式是什么？</dt>
+        <dd>以线上实时赛事数据为核心，集成了信息流、账户管理及多语言界面。其移动端与桌面端体验保持较高的一致性。</dd>
+      </div>
+      <div class="faq-item">
+        <dt>与同类产品相比有何特点？</dt>
+        <dd>信息密度较高、自定义选项丰富、更新频率稳定。同时也因其界面复杂而存在一定学习成本。</dd>
+      </div>
+      <div class="faq-item">
+        <dt>阅读时需要注意哪些方面？</dt>
+        <dd>注意区分“官方介绍”与“第三方解读”。任何平台都存在信息不对称，建议以官方文档或实际界面为准。本页仅提供知识框架，不构成建议。</dd>
+      </div>
+      <div class="faq-item">
+        <dt>还有哪些延伸阅读方向？</dt>
+        <dd>可关注：产品设计中的信息层级、实时数据推送技术、跨区域合规策略、以及用户行为研究等。这些主题均与 bet365 背后所代表的系统有所关联。</dd>
+      </div>
+    </dl>
+  </section>
+
+  <footer>
+    <span>知识库入口 · 内容仅供学习参考</span>
+    <span><a href="https://m--bet365.com">bet365</a>  · 背景索引</span>
+  </footer>
+</div>
+</body>
+</html>
